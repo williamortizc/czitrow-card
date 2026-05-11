@@ -8,3 +8,6 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+# SpecKit
+.speckit/
+specs/
