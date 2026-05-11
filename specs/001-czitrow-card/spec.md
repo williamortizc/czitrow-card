@@ -67,7 +67,7 @@ A visitor on a slow connection opens `czitrow.xyz` and sees the complete page lo
 - **FR-003**: The site MUST display exactly 3 clickable links with visible labels.
 - **FR-004**: The site MUST display a brief "about this site" description section (1-3 sentences).
 - **FR-005**: The site MUST display a footer with the domain name and current year.
-- **FR-006**: The page MUST render correctly on screens from 320px wide upward.
+- **FR-006**: The page MUST render correctly on screens from 320px wide upward with: no horizontal scrolling, links tappable with ≥44px touch targets, and layout centered with no overflow.
 - **FR-007**: The page MUST load with zero external resource requests (no CDN, no external fonts, no third-party scripts).
 - **FR-008**: The site MUST be deployable on GitHub Pages with a custom domain via `CNAME` file.
 - **FR-009**: The content MUST be editable by opening `index.html` in any plain text editor and changing text directly.
