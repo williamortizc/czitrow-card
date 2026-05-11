@@ -1,50 +1,59 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: N/A → 1.0.0 (initial constitution)
+- Modified principles: N/A (new)
+- Added sections: Core Principles, Technical Constraints, Development Workflow, Governance
+- Removed sections: N/A
+- Templates requiring updates:
+  ✅ constitution-template.md (base template, no changes needed)
+  ⚠ spec-template.md (pending — to be created in /speckit.specify phase)
+  ⚠ plan-template.md (pending — to be created in /speckit.plan phase)
+  ⚠ tasks-template.md (pending — to be created in /speckit.tasks phase)
+- Follow-up TODOs: None
+-->
+
+# Czitrow Card Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Static-First
+This project is a **static website**. No server-side rendering, no backend, no database, no API calls at runtime. The entire site is served as flat HTML, CSS, and optional minimal JavaScript from GitHub Pages. Any dynamic behavior MUST be achieved purely through client-side means and MUST NOT be required for core content access.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Single Page
+The site consists of **exactly one page** (`index.html`). There are no sub-pages, no routing, no multi-page navigation. All content is visible or reachable on this single page. Future expansion to multiple pages requires a constitutional amendment.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Minimal Stack
+The technology stack is **HTML + CSS only**. No frameworks, no build tools, no package managers, no transpilation. JavaScript is permitted only for optional progressive enhancement and MUST NOT be required for the site to function. The project MUST build and deploy with zero build steps.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Easy to Edit and Maintain
+The project MUST be editable by anyone with a text editor. No specialized tooling, no local server requirement beyond a simple file viewer, no compilation step. Adding or modifying content MUST require editing only a plain HTML file.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Clean and Fast
+The site MUST load fast and look clean. No heavy assets, no external dependencies that could break, no tracking scripts, no ad networks. Design is sober, readable, and responsive across mobile and desktop.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Technical Constraints
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- **Hosting**: GitHub Pages
+- **Domain**: `czitrow.xyz` (via CNAME)
+- **Total files**: Maximum 3 (`index.html`, `styles.css`, `CNAME`). Additional files require explicit approval.
+- **External resources**: None. All CSS is local. No CDN, no Google Fonts, no third-party assets.
+- **Browser target**: Modern browsers (last 2 versions of Chrome, Firefox, Safari, Edge).
+- **Responsive**: MUST display correctly on mobile (320px+) and desktop.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development Workflow
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- All changes are made directly to `index.html` and `styles.css`.
+- Git is used for version control. Commits should be small and descriptive.
+- Deployment is automatic via GitHub Pages on push to `main` branch.
+- No CI/CD pipeline, no testing framework, no linting. This is a static site with 2-3 files.
+- Review is visual: open the page, check it looks right, commit.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes all other practices. Any addition or removal of a core principle requires explicit approval from the project owner (William). Amendments must be documented with a version bump and a migration note.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+- **Constitutional amendments** require owner approval and a version bump.
+- **Complexity must be justified** — every new file, dependency, or feature must be explained against these principles.
+- **When in doubt, cut it** — if something does not clearly serve the core principles, it does not belong.
+
+**Version**: 1.0.0 | **Ratified**: 2026-05-10 | **Last Amended**: 2026-05-10

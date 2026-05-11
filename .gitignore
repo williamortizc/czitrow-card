@@ -1,0 +1,10 @@
+# Universal
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.env*
+
+# IDE
+.vscode/
+.idea/
