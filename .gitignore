@@ -9,6 +9,11 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Jekyll
+_site/
+.jekyll-cache/
+.sass-cache/
+
 # SpecKit
 .speckit/
 .specify/

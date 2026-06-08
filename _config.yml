@@ -1,0 +1,15 @@
+title: William Ortiz
+description: Sistemas, senales y conocimiento operativo.
+url: "https://czitrow.xyz"
+baseurl: ""
+timezone: America/Costa_Rica
+permalink: /blog/:year/:month/:day/:title/
+markdown: kramdown
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      author: William Ortiz

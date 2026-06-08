@@ -1,0 +1,56 @@
+---
+layout: default
+title: Blog
+description: Entradas tecnicas, procedimientos y notas de William Ortiz.
+---
+<main class="shell blog-shell" aria-label="Blog de William Ortiz">
+    <section class="identity-panel blog-panel">
+        <div class="panel-rail" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <header class="hero blog-hero">
+            <p class="system-label">czitrow.xyz / blog</p>
+            <h1 class="blog-title" data-text="Blog">Blog</h1>
+            <p class="tagline">Entradas tecnicas, procedimientos y notas de campo.</p>
+        </header>
+
+        <section class="description blog-intro" aria-label="Descripcion del blog">
+            <p>
+                Cada entrada vive como un archivo Markdown en <code>_posts/</code>.
+                Agrega un archivo, escribe con front matter y GitHub Pages publica el resultado.
+            </p>
+        </section>
+
+        <section class="post-list" aria-label="Entradas publicadas">
+            {% if site.posts.size > 0 %}
+                {% for post in site.posts %}
+                    <article class="post-card">
+                        <a href="{{ post.url | relative_url }}">
+                            <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                            <strong>{{ post.title | escape }}</strong>
+                            {% if post.description %}
+                                <small>{{ post.description | escape }}</small>
+                            {% else %}
+                                <small>{{ post.excerpt | strip_html | truncate: 140 }}</small>
+                            {% endif %}
+                        </a>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p class="empty-state">Aun no hay entradas publicadas.</p>
+            {% endif %}
+        </section>
+
+        <nav class="blog-actions" aria-label="Navegacion del blog">
+            <a href="/">Inicio</a>
+            <a href="https://github.com/williamortizc" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+
+        <footer>
+            <p>czitrow.xyz · 2026</p>
+        </footer>
+    </section>
+</main>

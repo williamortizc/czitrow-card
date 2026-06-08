@@ -460,3 +460,246 @@ footer p {
         opacity: 0.38;
     }
 }
+
+/* ===== Blog ===== */
+.blog-shell {
+    align-items: start;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.blog-panel {
+    width: min(100%, 920px);
+}
+
+.blog-hero {
+    padding-bottom: 1.25rem;
+}
+
+.blog-title,
+.post-title {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.blog-title {
+    font-size: 3.25rem;
+}
+
+.post-title {
+    font-size: 2.25rem;
+}
+
+.blog-intro code {
+    color: var(--amber);
+    font-size: 0.94em;
+}
+
+.post-list {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.75rem;
+    padding: 0 1.25rem 1.5rem;
+}
+
+.post-card a {
+    display: grid;
+    gap: 0.45rem;
+    min-height: 6rem;
+    padding: 1rem;
+    border: 1px solid var(--line-faint);
+    border-radius: 8px;
+    background:
+        linear-gradient(90deg, rgba(0, 255, 187, 0.12), transparent 42%),
+        rgba(2, 5, 8, 0.68);
+    transition:
+        border-color 160ms ease,
+        background-color 160ms ease,
+        transform 160ms ease,
+        box-shadow 160ms ease;
+}
+
+.post-card a:hover,
+.post-card a:focus-visible,
+.blog-actions a:hover,
+.blog-actions a:focus-visible {
+    border-color: var(--accent);
+    background-color: rgba(0, 255, 187, 0.08);
+    box-shadow: 0 0 24px rgba(0, 255, 187, 0.12);
+    transform: translateY(-2px);
+}
+
+.post-card a:focus-visible,
+.blog-actions a:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
+}
+
+.post-date {
+    width: max-content;
+    max-width: 100%;
+    padding: 0.22rem 0.42rem;
+    border: 1px solid rgba(255, 215, 96, 0.3);
+    border-radius: 4px;
+    color: var(--amber);
+    font-size: 0.72rem;
+}
+
+.post-card strong {
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1.3;
+}
+
+.post-card small,
+.empty-state {
+    color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.55;
+}
+
+.empty-state {
+    margin: 0;
+    padding: 1rem;
+    border: 1px solid var(--line-faint);
+    border-radius: 8px;
+    background: rgba(2, 5, 8, 0.68);
+}
+
+.post-tags {
+    padding-bottom: 0.75rem;
+}
+
+.post-content {
+    position: relative;
+    z-index: 1;
+    padding: 0 1.25rem 1.5rem;
+    color: var(--muted);
+    font-size: 0.98rem;
+}
+
+.post-content > * {
+    max-width: 44rem;
+}
+
+.post-content h2,
+.post-content h3 {
+    margin: 1.8rem 0 0.65rem;
+    color: var(--text);
+    line-height: 1.25;
+}
+
+.post-content h2 {
+    font-size: 1.35rem;
+}
+
+.post-content h3 {
+    font-size: 1.08rem;
+}
+
+.post-content p,
+.post-content ul,
+.post-content ol,
+.post-content pre {
+    margin: 0 0 1rem;
+}
+
+.post-content a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 255, 187, 0.35);
+    text-underline-offset: 0.2em;
+}
+
+.post-content code {
+    color: var(--amber);
+    font-size: 0.94em;
+}
+
+.post-content pre {
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 1rem;
+    border: 1px solid var(--line-faint);
+    border-radius: 8px;
+    background: rgba(2, 5, 8, 0.82);
+}
+
+.post-content pre code {
+    color: var(--text);
+}
+
+.blog-actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0 1.25rem 1.5rem;
+}
+
+.blog-actions a {
+    min-height: 2.65rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 0.85rem;
+    border: 1px solid var(--line-faint);
+    border-radius: 8px;
+    background: rgba(2, 5, 8, 0.68);
+    color: var(--accent);
+    font-size: 0.86rem;
+    transition:
+        border-color 160ms ease,
+        background-color 160ms ease,
+        transform 160ms ease,
+        box-shadow 160ms ease;
+}
+
+@media (min-width: 680px) {
+    .blog-shell {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .blog-title {
+        font-size: 4.4rem;
+    }
+
+    .post-title {
+        font-size: 3rem;
+    }
+
+    .post-list,
+    .post-content,
+    .blog-actions {
+        padding-left: 2.25rem;
+        padding-right: 2.25rem;
+    }
+}
+
+@media (min-width: 1180px) {
+    .blog-title {
+        font-size: 5.6rem;
+    }
+
+    .post-title {
+        font-size: 3.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 1ms !important;
+    }
+
+    .matrix-field {
+        opacity: 0.38;
+    }
+}

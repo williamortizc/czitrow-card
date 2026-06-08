@@ -1,0 +1,41 @@
+---
+layout: default
+---
+<main class="shell blog-shell" aria-label="Entrada del blog">
+    <article class="identity-panel blog-panel post-panel">
+        <div class="panel-rail" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <header class="hero blog-hero">
+            <p class="system-label">blog / {{ page.date | date: "%Y-%m-%d" }}</p>
+            <h1 class="post-title" data-text="{{ page.title | escape }}">{{ page.title | escape }}</h1>
+            {% if page.description %}
+                <p class="tagline">{{ page.description | escape }}</p>
+            {% endif %}
+        </header>
+
+        {% if page.tags and page.tags.size > 0 %}
+            <aside class="signal-strip post-tags" aria-label="Etiquetas">
+                {% for tag in page.tags %}
+                    <span>{{ tag }}</span>
+                {% endfor %}
+            </aside>
+        {% endif %}
+
+        <section class="post-content">
+            {{ content }}
+        </section>
+
+        <nav class="blog-actions" aria-label="Navegacion de la entrada">
+            <a href="/blog/">Volver al blog</a>
+            <a href="/">Inicio</a>
+        </nav>
+
+        <footer>
+            <p>czitrow.xyz · {{ page.date | date: "%Y" }}</p>
+        </footer>
+    </article>
+</main>
