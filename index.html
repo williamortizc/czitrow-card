@@ -3,38 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>William Ortiz</title>
-    <meta name="description" content="Notas, ideas y cosas útiles. El rincón mínimo de William Ortiz en internet.">
+    <title>William Ortiz | czitrow.xyz</title>
+    <meta name="description" content="Bitacora personal de William Ortiz: notas tecnicas, ideas y procedimientos utiles.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <main class="container">
+    <canvas class="matrix-field" id="matrixField" aria-hidden="true"></canvas>
+    <div class="scan-grid" aria-hidden="true"></div>
 
-        <!-- NAME -->
-        <header>
-            <h1>William Ortiz</h1>
-            <p class="tagline">Notas, ideas y cosas útiles.</p>
-        </header>
+    <main class="shell" aria-label="Tarjeta personal de William Ortiz">
+        <section class="identity-panel">
+            <div class="panel-rail" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
 
-        <!-- LINKS -->
-        <nav>
-            <ul>
-                <li><a href="https://github.com/williamortizc" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                <li><!-- TODO: Replace placeholder URL with real URL --><a href="#placeholder" target="_blank" rel="noopener noreferrer">Notas</a></li>
-                <li><a href="mailto:williamcr1588@gmail.com" target="_blank" rel="noopener noreferrer">Contacto</a></li>
-            </ul>
-        </nav>
+            <!-- NAME -->
+            <header class="hero">
+                <p class="system-label">czitrow.xyz / acceso publico</p>
+                <h1 data-text="William Ortiz">William Ortiz</h1>
+                <p class="tagline">Notas, ideas y procedimientos utiles desde la terminal.</p>
+            </header>
 
-        <!-- DESCRIPTION -->
-        <section class="description">
-            <p>Este es mi rincón mínimo en internet. Aquí comparto procedimientos técnicos, soluciones y notas que me son útiles, y quizá a alguien más.</p>
+            <!-- DESCRIPTION -->
+            <section class="description" aria-label="Descripcion">
+                <p>
+                    Este es mi nodo personal en internet: un lugar minimo para publicar soluciones,
+                    apuntes tecnicos y fragmentos que vale la pena volver a encontrar.
+                </p>
+            </section>
+
+            <!-- LINKS -->
+            <nav class="link-grid" aria-label="Enlaces principales">
+                <a href="https://github.com/williamortizc" target="_blank" rel="noopener noreferrer">
+                    <span class="link-code">01</span>
+                    <span>
+                        <strong>GitHub</strong>
+                        <small>codigo y repositorios</small>
+                    </span>
+                </a>
+                <a href="https://github.com/williamortizc?tab=repositories" target="_blank" rel="noopener noreferrer">
+                    <span class="link-code">02</span>
+                    <span>
+                        <strong>Proyectos</strong>
+                        <small>experimentos y notas</small>
+                    </span>
+                </a>
+                <a href="mailto:williamcr1588@gmail.com" target="_blank" rel="noopener noreferrer">
+                    <span class="link-code">03</span>
+                    <span>
+                        <strong>Contacto</strong>
+                        <small>canal directo</small>
+                    </span>
+                </a>
+            </nav>
+
+            <aside class="signal-strip" aria-label="Estado del sitio">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>GitHub Pages</span>
+                <span>Sin dependencias</span>
+            </aside>
+
+            <!-- FOOTER -->
+            <footer>
+                <p>czitrow.xyz · 2026</p>
+            </footer>
         </section>
-
-        <!-- FOOTER -->
-        <footer>
-            <p>czitrow.xyz · 2026</p>
-        </footer>
-
     </main>
+
+    <script>
+        (() => {
+            const canvas = document.getElementById("matrixField");
+            const context = canvas.getContext("2d");
+            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+            const glyphs = "01<>/{}[]#$CZITROWmatrixsudochmodgit";
+            let columns = [];
+            let width = 0;
+            let height = 0;
+            let frame = 0;
+            let animationId = null;
+
+            function resize() {
+                const ratio = Math.min(window.devicePixelRatio || 1, 2);
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = Math.floor(width * ratio);
+                canvas.height = Math.floor(height * ratio);
+                canvas.style.width = `${width}px`;
+                canvas.style.height = `${height}px`;
+                context.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+                const columnWidth = width < 560 ? 18 : 22;
+                const count = Math.ceil(width / columnWidth);
+                columns = Array.from({ length: count }, (_, index) => ({
+                    x: index * columnWidth,
+                    y: Math.random() * height,
+                    speed: 1.5 + Math.random() * 3.5,
+                    size: 12 + Math.random() * 5,
+                    alpha: 0.25 + Math.random() * 0.55
+                }));
+            }
+
+            function drawStaticField() {
+                context.clearRect(0, 0, width, height);
+                context.fillStyle = "rgba(0, 212, 170, 0.16)";
+                context.font = "12px monospace";
+
+                for (let y = 24; y < height; y += 34) {
+                    for (let x = 12; x < width; x += 48) {
+                        const char = glyphs[(x + y) % glyphs.length];
+                        context.fillText(char, x, y);
+                    }
+                }
+            }
+
+            function draw() {
+                frame += 1;
+                context.fillStyle = "rgba(2, 5, 8, 0.16)";
+                context.fillRect(0, 0, width, height);
+
+                for (const column of columns) {
+                    const char = glyphs[Math.floor(Math.random() * glyphs.length)];
+                    context.font = `${column.size}px monospace`;
+                    context.fillStyle = `rgba(0, 255, 187, ${column.alpha})`;
+                    context.fillText(char, column.x, column.y);
+
+                    if (frame % 3 === 0) {
+                        context.fillStyle = `rgba(255, 215, 96, ${column.alpha * 0.28})`;
+                        context.fillText(char, column.x + 1, column.y - column.size);
+                    }
+
+                    column.y += column.speed;
+                    if (column.y > height + 80) {
+                        column.y = -40 - Math.random() * height * 0.25;
+                        column.speed = 1.5 + Math.random() * 3.5;
+                        column.alpha = 0.25 + Math.random() * 0.55;
+                    }
+                }
+
+                animationId = requestAnimationFrame(draw);
+            }
+
+            function start() {
+                cancelAnimationFrame(animationId);
+                resize();
+
+                if (prefersReducedMotion.matches) {
+                    drawStaticField();
+                    return;
+                }
+
+                context.fillStyle = "#020508";
+                context.fillRect(0, 0, width, height);
+                draw();
+            }
+
+            window.addEventListener("resize", resize);
+            prefersReducedMotion.addEventListener("change", start);
+            start();
+        })();
+    </script>
 </body>
 </html>
